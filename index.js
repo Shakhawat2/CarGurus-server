@@ -12,28 +12,36 @@ app.use(express.json());
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.nm2ezgo.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
-async function run(){
-    try{
+async function run() {
+    try {
         const usersCollection = client.db("assignment-12").collection("user");
+        const categoryCollection = client.db("assignment-12").collection("category");
         
+        // get category 
+        app.get('/category', async (req, res) => {
+            const query = {};
+            const categories = await categoryCollection.find(query).toArray();
+            res.send(categories);
+        })
+
+
         // Post user
-        app.post('/users', async(req, res) =>{
+        app.post('/users', async (req, res) => {
             const user = req.body;
             const result = await usersCollection.insertOne(user);
-            console.log(result);
             res.send(result);
         })
     }
-    finally{
+    finally {
 
     }
 }
 run().catch(err => console.log(err))
 
-app.get('/', (req, res) =>{
+app.get('/', (req, res) => {
     res.send('server is running')
 });
 
-app.listen(port, () =>{
+app.listen(port, () => {
     console.log(`port running on ${port}`);
 })

@@ -1,0 +1,15 @@
+[
+    {
+        "picture" : "",
+        "name" : "",
+        "location" : "Gazipur",
+        "resale_price" : 1500,
+        "category_id" : 1,
+        "category" : "microbus",
+        "original_price" : 3500,
+        "years_of_use" : "1.5 year",
+        "post_time" : "april 22, 2022",
+        "seller_name" : "Mahabub Hossain",
+        "verified" : true        
+    }
+]

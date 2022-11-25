@@ -1,0 +1,20 @@
+[
+    {
+        "category_id" : 1,
+        "image" : "https://www.nissanbd.com/assets/img/urvan/overview-topimage.jpg",
+        "category_name" : "Microbus",
+        "description" : "A minibus, microbus, minicoach, or commuter is a passenger-carrying motor vehicle that is designed to carry more people than a multi-purpose vehicle or minivan, but fewer people than a full-size bus. In the United Kingdom, the word minibus is used to describe any full-sized passenger-carrying van or panel truck"
+    },
+    {
+        "category_id" : 2,
+        "image" : "https://www.volvobuses.com/content/dam/volvo/volvo-buses/markets/global/en-en/news/2019/1860X1050-volvo-luxury-coaches.jpg",
+        "category_name" : "Luxury Bus",
+        "description" : "Coach buses are much more luxurious. They're made to transport passengers long distances in comfort. Tourists going on vacations to far away places prefer these type of buses. They are spacious and provide more amenities to passengers such as televisions, Wi-Fi access, and a bathroom towards the back."
+    },
+    {
+        "category_id" : 3,
+        "image" : "https://cars.usnews.com/images/article/201712/127376/1-_concept_vw_ID.Space_vizzion_DB2019AU01600_large_Cropped.jpg",
+        "category_name" : "Electric car",
+        "description" : "An electric car, battery electric car, or all-electric car is an automobile that is propelled by one or more electric motors, using only energy stored in batteries. Compared to internal combustion engine (ICE) vehicles, electric cars are quieter, have no exhaust emissions, and lower emissions overall."
+    }
+]
