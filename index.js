@@ -36,6 +36,7 @@ async function run() {
         const usersCollection = client.db("assignment-12").collection("user");
         const categoryCollection = client.db("assignment-12").collection("category");
         const category_Product_Collection = client.db("assignment-12").collection("category_product");
+        const bookingCollection = client.db("assignment-12").collection("bookings");
 
         // get all category 
         app.get('/category', async (req, res) => {
@@ -78,6 +79,33 @@ async function run() {
                 return res.send({isBuyer : true})
             }
             res.status(403).send({message : 'Forbidden access'})
+        })
+        //get all sellers
+        app.get('/users/sellers', async(req, res) =>{
+            const query = {account_type : "Seller"}
+            const sellers = await usersCollection.find(query).toArray();
+            res.send(sellers);
+        })
+        //get all Buyers
+        app.get('/users/buyers', async(req, res) =>{
+            const query = {account_type : "Buyer"}
+            const buyers = await usersCollection.find(query).toArray();
+            res.send(buyers);
+        })
+        // delete user 
+        app.delete('/user/:id', async (req, res) =>{
+            const id = req.params.id;
+            const query = {_id : ObjectId(id)}
+            const result = await usersCollection.deleteOne(query);
+            console.log(result);
+            res.send(result)
+        })
+        //Post Booking
+        app.post('/booking', async (req, res) =>{
+            const booking = req.body;
+            const result = await bookingCollection.insertOne(booking);
+            console.log(result);
+            res.send(result);
         })
 
         // Post user
