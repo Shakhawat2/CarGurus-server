@@ -37,7 +37,21 @@ async function run() {
         const categoryCollection = client.db("assignment-12").collection("category");
         const category_Product_Collection = client.db("assignment-12").collection("category_product");
         const bookingCollection = client.db("assignment-12").collection("bookings");
+        const advertiseCollection = client.db("assignment-12").collection("advertise");
 
+        // get advertise
+        app.get('/advertisement', async(req, res) =>{
+            const query = {};
+            const result = await advertiseCollection.find(query).toArray();
+            res.send(result);
+        })
+        // post advertise 
+        app.post("/advertise", async(req, res) =>{
+            const advertise = req.body;
+            const result = await advertiseCollection.insertOne(advertise);
+            res.send(result);
+        })
+        
         // get all category 
         app.get('/category', async (req, res) => {
             const query = {};
@@ -57,6 +71,13 @@ async function run() {
             const result = await category_Product_Collection.insertOne(product);
             res.send(result);
         })
+        // delete product
+        app.delete('/product/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) }
+            const result = await category_Product_Collection.deleteOne(query);
+            res.send(result)
+        })
         // find own category product 
         app.get('/category/product/:email', async (req, res) => {
             const email = req.params.email;
@@ -70,8 +91,7 @@ async function run() {
             const query = {email : email};
             const result = await category_Product_Collection.find(query).toArray();
             res.send(result);
-        })
-
+        });
         //GET TOKEN
         app.get('/jwt', async (req, res) => {
             const email = req.query.email;
