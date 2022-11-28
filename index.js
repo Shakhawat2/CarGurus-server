@@ -64,6 +64,13 @@ async function run() {
             const result = await category_Product_Collection.find(query).toArray();
             res.send(result);
         })
+        //get specific product for email 
+        app.get('/product/:email', async(req, res) =>{
+            const email = req.params.email;
+            const query = {email : email};
+            const result = await category_Product_Collection.find(query).toArray();
+            res.send(result);
+        })
 
         //GET TOKEN
         app.get('/jwt', async (req, res) => {
