@@ -45,7 +45,7 @@ async function run() {
             const result = await advertiseCollection.find(query).toArray();
             res.send(result);
         })
-        // post advertise 
+        // post advertise in database
         app.post("/advertise", async(req, res) =>{
             const advertise = req.body;
             const result = await advertiseCollection.insertOne(advertise);
